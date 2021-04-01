@@ -15,5 +15,13 @@ npm run serve
 npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### .ENV file
+
+To prevent your api keys being displayed publicly on github you need to make an .env file in the root directory with the following keys. 
+
+```
+VUE_APP_CLIENT_ID=*****
+VUE_APP_CLIENT_SECRET=*****
+VUE_APP_LOGIN_PASSWORD=*****
+VUE_APP_LOGIN_USERNAME=****
+```

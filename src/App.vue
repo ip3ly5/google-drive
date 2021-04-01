@@ -12,14 +12,13 @@
     methods:{
       logout(){
         localStorage.removeItem('token');
-        this.$router.push({name: 'Login'})
-      }
+        this.$router.go({name: 'Login'})
+      }  
     }
   }
 </script>
 
 <style>
-
 html, body {
   padding:0;
   margin:0;
@@ -27,14 +26,25 @@ html, body {
 }
 
 html {
-  width:100vw;
-  height:100vh;
   display:flex;
+  height:100vh;
 }
 
 body {
   display:flex;
   flex:1;
+}
+
+input {
+    margin:.5em 0;
+    height: 2.5rem;
+    padding: 0px 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    outline: none;
 }
 
 #app {
@@ -44,10 +54,12 @@ body {
   flex-direction:column;
   display:flex;
   flex:1;
+  color:rgb(31, 31, 58);
 }
 
 #nav {
   height:4em;
+  position:fixed;
   width:100%;
   background-color:white;
   display:flex;
@@ -64,7 +76,7 @@ body {
 .main {
   background-color:#F8F9FD;
   flex:1;
-  padding:0 4rem;
+  padding:4rem 4rem;
 }
 
 .logo-link {
@@ -78,6 +90,20 @@ body {
 h2 {
   font-weight:400;
   color:rgb(117, 117, 117);
+}
+
+h3 {
+  font-weight:500;
+  color:rgb(71, 71, 71);
+  font-size:1.4em;
+  margin:.5em 0;
+}
+
+h4 {
+  font-weight:400;
+  font-size:1em;
+  color:rgb(148, 148, 148);
+  margin: .5em 0;
 }
 
 .logout-button {

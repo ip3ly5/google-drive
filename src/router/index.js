@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import FolderView from '../views/FolderView.vue'
+import store from "../store"
 
 const routes = [
   {
@@ -18,14 +19,6 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   }
 ]
 
@@ -35,10 +28,11 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  let isAuthenticated = localStorage.token;
-  if (to.name !== 'Login' && !isAuthenticated){
+  // If user object does not exist send to login page
+  let isAuthenticated = localStorage.token
+  if (to.name !== 'Login' && !isAuthenticated || to.name !== 'Login' && store.state.user.length == 0){
       next({ name: 'Login' });
-  }   
+  }
   else next()
 })
 

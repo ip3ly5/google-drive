@@ -49,7 +49,7 @@ export default {
             }).catch(err=>{
                 console.log(err)
                 console.error(
-                    `You likely need to make an .env file in root directory with the following params: 
+                    `Make an .env file in root directory with the following params and recompile with npm run serve: 
                     VUE_APP_CLIENT_ID=*****
                     VUE_APP_CLIENT_SECRET=*****
                     VUE_APP_LOGIN_PASSWORD=*****

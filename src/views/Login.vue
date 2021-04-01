@@ -19,7 +19,6 @@
 <script>
 import Api from '@/services/api'
 
-
 export default {
     name: 'login',
     computed: {
@@ -27,7 +26,6 @@ export default {
     },
     methods: {
         Login() {
-
             let form = new FormData()
             form.append('grant_type', 'password')
             form.append('scope', 'dashboard')
@@ -48,10 +46,17 @@ export default {
                     // NOTE: Localstorage is an insecure method of storing auth tokens, 
                     // I would normally receive it via a cookie but this is a frontend test so we'll make do for now :)
                     this.$router.push({name: 'Home'})
+            }).catch(err=>{
+                console.log(err)
+                console.error(
+                    `You likely need to make an .env file in root directory with the following params: 
+                    VUE_APP_CLIENT_ID=*****
+                    VUE_APP_CLIENT_SECRET=*****
+                    VUE_APP_LOGIN_PASSWORD=*****
+                    VUE_APP_LOGIN_USERNAME=****`)
             })
         }
     },
-
     beforeRouteLeave(to, from, next){
         if(from.name == 'Login' && to.name == 'Home'){
             if(localStorage.token){
@@ -66,8 +71,8 @@ export default {
     }
 }
 </script>
-<style scoped>
 
+<style scoped>
 .login-container {
     position:absolute;
     grid-gap: 1rem;
